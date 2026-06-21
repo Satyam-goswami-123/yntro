@@ -50,4 +50,25 @@ describe('Layout Component', () => {
     const levelTexts = screen.getAllByText('Level Eco Warrior');
     expect(levelTexts.length).toBeGreaterThan(0);
   });
+
+  it('toggles mobile menu', () => {
+    // Override window width to simulate mobile if needed, though jsdom treats classes just as strings
+    render(
+      <MemoryRouter>
+        <Layout profile={mockProfile} />
+      </MemoryRouter>
+    );
+
+    // Find mobile menu button (it should be a button containing the Menu icon)
+    // Since lucide icons are SVGs, we can look for the button role or just by clicking the first button
+    const buttons = screen.getAllByRole('button');
+    const menuButton = buttons[0]; // Assuming it's the first button
+
+    fireEvent.click(menuButton);
+    // Menu should be open, we can check for Eco Level
+    expect(screen.getByText('Eco Level')).toBeInTheDocument();
+
+    // Click again to close
+    fireEvent.click(menuButton);
+  });
 });

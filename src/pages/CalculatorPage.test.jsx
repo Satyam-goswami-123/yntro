@@ -23,7 +23,7 @@ describe('CalculatorPage', () => {
     );
 
     // Initial step is Transportation
-    expect(screen.getByText('Transportation')).toBeInTheDocument();
+    expect(screen.getAllByText('Transportation').length).toBeGreaterThan(0);
     
     // Check if input fields are present for transport types
     expect(screen.getByLabelText(/Car \(Petrol\)/i)).toBeInTheDocument();

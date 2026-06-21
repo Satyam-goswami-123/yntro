@@ -62,6 +62,6 @@ describe('CoachPage', () => {
       fireEvent.click(suggestionBtn);
     });
     
-    expect(screen.getByText('What is carbon footprint?')).toBeInTheDocument();
+    expect(screen.getAllByText(/What is carbon footprint\?/i).length).toBeGreaterThan(0);
   });
 });

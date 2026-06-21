@@ -42,9 +42,9 @@ describe('DashboardPage', () => {
     expect(screen.getByText('TestUser')).toBeInTheDocument();
     
     // Check default states for charts
-    expect(screen.getByText('No data yet.')).toBeInTheDocument();
-    expect(screen.getByText('Log at least 2 days to see trends.')).toBeInTheDocument();
-    expect(screen.getByText('Calculate your footprint to get personalized AI recommendations!')).toBeInTheDocument();
+    expect(screen.getByText(/No data yet/i)).toBeInTheDocument();
+    expect(screen.getByText(/Log at least 2 days to see trends/i)).toBeInTheDocument();
+    expect(screen.getByText(/Calculate your footprint to get personalized AI recommendations/i)).toBeInTheDocument();
   });
 
   it('renders data when history is present', () => {

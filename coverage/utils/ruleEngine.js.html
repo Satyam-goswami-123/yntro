@@ -1,0 +1,664 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Code coverage report for utils/ruleEngine.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+    
+<body>
+<div class='wrapper'>
+    <div class='pad1'>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">utils</a> ruleEngine.js</h1>
+        <div class='clearfix'>
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">90% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>36/40</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">93.65% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>59/63</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>17/17</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">89.74% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>35/39</span>
+            </div>
+        
+            
+        </div>
+        <p class="quiet">
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+        </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input type="search" id="fileSearch">
+            </div>
+        </template>
+    </div>
+    <div class='status-line high'></div>
+    <pre><table class="coverage">
+<tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
+<a name='L2'></a><a href='#L2'>2</a>
+<a name='L3'></a><a href='#L3'>3</a>
+<a name='L4'></a><a href='#L4'>4</a>
+<a name='L5'></a><a href='#L5'>5</a>
+<a name='L6'></a><a href='#L6'>6</a>
+<a name='L7'></a><a href='#L7'>7</a>
+<a name='L8'></a><a href='#L8'>8</a>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a>
+<a name='L114'></a><a href='#L114'>114</a>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a>
+<a name='L117'></a><a href='#L117'>117</a>
+<a name='L118'></a><a href='#L118'>118</a>
+<a name='L119'></a><a href='#L119'>119</a>
+<a name='L120'></a><a href='#L120'>120</a>
+<a name='L121'></a><a href='#L121'>121</a>
+<a name='L122'></a><a href='#L122'>122</a>
+<a name='L123'></a><a href='#L123'>123</a>
+<a name='L124'></a><a href='#L124'>124</a>
+<a name='L125'></a><a href='#L125'>125</a>
+<a name='L126'></a><a href='#L126'>126</a>
+<a name='L127'></a><a href='#L127'>127</a>
+<a name='L128'></a><a href='#L128'>128</a>
+<a name='L129'></a><a href='#L129'>129</a>
+<a name='L130'></a><a href='#L130'>130</a>
+<a name='L131'></a><a href='#L131'>131</a>
+<a name='L132'></a><a href='#L132'>132</a>
+<a name='L133'></a><a href='#L133'>133</a>
+<a name='L134'></a><a href='#L134'>134</a>
+<a name='L135'></a><a href='#L135'>135</a>
+<a name='L136'></a><a href='#L136'>136</a>
+<a name='L137'></a><a href='#L137'>137</a>
+<a name='L138'></a><a href='#L138'>138</a>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a>
+<a name='L142'></a><a href='#L142'>142</a>
+<a name='L143'></a><a href='#L143'>143</a>
+<a name='L144'></a><a href='#L144'>144</a>
+<a name='L145'></a><a href='#L145'>145</a>
+<a name='L146'></a><a href='#L146'>146</a>
+<a name='L147'></a><a href='#L147'>147</a>
+<a name='L148'></a><a href='#L148'>148</a>
+<a name='L149'></a><a href='#L149'>149</a>
+<a name='L150'></a><a href='#L150'>150</a>
+<a name='L151'></a><a href='#L151'>151</a>
+<a name='L152'></a><a href='#L152'>152</a>
+<a name='L153'></a><a href='#L153'>153</a>
+<a name='L154'></a><a href='#L154'>154</a>
+<a name='L155'></a><a href='#L155'>155</a>
+<a name='L156'></a><a href='#L156'>156</a>
+<a name='L157'></a><a href='#L157'>157</a>
+<a name='L158'></a><a href='#L158'>158</a>
+<a name='L159'></a><a href='#L159'>159</a>
+<a name='L160'></a><a href='#L160'>160</a>
+<a name='L161'></a><a href='#L161'>161</a>
+<a name='L162'></a><a href='#L162'>162</a>
+<a name='L163'></a><a href='#L163'>163</a>
+<a name='L164'></a><a href='#L164'>164</a>
+<a name='L165'></a><a href='#L165'>165</a>
+<a name='L166'></a><a href='#L166'>166</a>
+<a name='L167'></a><a href='#L167'>167</a>
+<a name='L168'></a><a href='#L168'>168</a>
+<a name='L169'></a><a href='#L169'>169</a>
+<a name='L170'></a><a href='#L170'>170</a>
+<a name='L171'></a><a href='#L171'>171</a>
+<a name='L172'></a><a href='#L172'>172</a>
+<a name='L173'></a><a href='#L173'>173</a>
+<a name='L174'></a><a href='#L174'>174</a>
+<a name='L175'></a><a href='#L175'>175</a>
+<a name='L176'></a><a href='#L176'>176</a>
+<a name='L177'></a><a href='#L177'>177</a>
+<a name='L178'></a><a href='#L178'>178</a>
+<a name='L179'></a><a href='#L179'>179</a>
+<a name='L180'></a><a href='#L180'>180</a>
+<a name='L181'></a><a href='#L181'>181</a>
+<a name='L182'></a><a href='#L182'>182</a>
+<a name='L183'></a><a href='#L183'>183</a>
+<a name='L184'></a><a href='#L184'>184</a>
+<a name='L185'></a><a href='#L185'>185</a>
+<a name='L186'></a><a href='#L186'>186</a>
+<a name='L187'></a><a href='#L187'>187</a>
+<a name='L188'></a><a href='#L188'>188</a>
+<a name='L189'></a><a href='#L189'>189</a>
+<a name='L190'></a><a href='#L190'>190</a>
+<a name='L191'></a><a href='#L191'>191</a>
+<a name='L192'></a><a href='#L192'>192</a>
+<a name='L193'></a><a href='#L193'>193</a>
+<a name='L194'></a><a href='#L194'>194</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">40x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// Rule-based recommendation engine
+// Analyzes user footprint data and generates personalized suggestions
+&nbsp;
+const RULES = [
+  {
+    id: 'high_car_usage',
+    condition: (breakdown, total) =&gt; breakdown.transport &gt; total * 0.4,
+    priority: 1,
+    icon: '🚌',
+    title: 'Switch to Public Transport',
+    description: 'Your transport emissions are over 40% of your total. Try using bus or train twice a week.',
+    impact: 'Could reduce your footprint by 15-25%',
+    category: 'transport',
+  },
+  {
+    id: 'high_electricity',
+    condition: (breakdown, total) =&gt; breakdown.electricity &gt; 5,
+    priority: 2,
+    icon: '💡',
+    title: 'Reduce Electricity Consumption',
+    description: 'Turn off lights and appliances when not in use. Use LED bulbs and reduce AC usage during peak hours.',
+    impact: 'Save up to 2 kg CO₂ per day',
+    category: 'electricity',
+  },
+  {
+    id: 'high_meat',
+    condition: (breakdown, total) =&gt; breakdown.food &gt; total * 0.35,
+    priority: 3,
+    icon: '🥗',
+    title: 'Try More Plant-Based Meals',
+    description: 'Replacing one non-veg meal per day with a vegetarian option significantly reduces emissions.',
+    impact: 'Could reduce food emissions by 40%',
+    category: 'food',
+  },
+  {
+    id: 'low_recycling',
+    condition: (breakdown) =&gt; breakdown.waste &gt; 2,
+    priority: 4,
+    icon: '♻️',
+    title: 'Increase Recycling',
+    description: 'Sort your waste and recycle paper, plastic, and glass. Compost food scraps.',
+    impact: 'Reduce waste emissions by up to 90%',
+    category: 'waste',
+  },
+  {
+    id: 'high_shopping',
+    condition: (breakdown) =&gt; breakdown.shopping &gt; 5,
+    priority: 5,
+    icon: '🛍️',
+    title: 'Buy Second-Hand',
+    description: 'Consider buying second-hand clothing and electronics. Each reused item saves significant emissions.',
+    impact: 'Save 15-50 kg CO₂ per item',
+    category: 'shopping',
+  },
+  {
+    id: 'water_usage',
+    condition: (breakdown) =&gt; breakdown.water &gt; 1,
+    priority: 6,
+    icon: '💧',
+    title: 'Conserve Water',
+    description: 'Take shorter showers, fix leaky faucets, and use water-efficient appliances.',
+    impact: 'Save up to 0.5 kg CO₂ per day',
+    category: 'water',
+  },
+  {
+    id: 'general_tip_bike',
+    condition: () =&gt; true,
+    priority: 10,
+    icon: '🚲',
+    title: 'Bike for Short Trips',
+    description: 'For trips under 5 km, cycling is faster in traffic and produces zero emissions.',
+    impact: 'Zero emissions for short distances',
+    category: 'transport',
+  },
+  {
+    id: 'general_tip_reusable',
+    condition: () =&gt; true,
+    priority: 11,
+    icon: '🧴',
+    title: 'Use Reusable Containers',
+    description: 'Replace disposable bottles, bags, and containers with reusable alternatives.',
+    impact: 'Reduce plastic waste significantly',
+    category: 'waste',
+  },
+  {
+    id: 'general_tip_local',
+    condition: () =&gt; true,
+    priority: 12,
+    icon: '🌽',
+    title: 'Buy Local Produce',
+    description: 'Local food has lower transport emissions. Visit farmers markets when possible.',
+    impact: 'Reduce food transport emissions',
+    category: 'food',
+  },
+  {
+    id: 'general_tip_solar',
+    condition: () =&gt; true,
+    priority: 13,
+    icon: '☀️',
+    title: 'Consider Solar Energy',
+    description: 'If possible, switch to solar panels or green energy providers for your electricity.',
+    impact: 'Can reduce electricity emissions by 90%',
+    category: 'electricity',
+  },
+];
+&nbsp;
+export function getRecommendations(breakdown, total, limit = 5) {
+  const applicable = RULES
+    .filter(rule =&gt; rule.condition(breakdown, total))
+    .sort((a, b) =&gt; a.priority - b.priority)
+    .slice(0, limit);
+&nbsp;
+  return applicable;
+}
+&nbsp;
+export function getRandomTip() {
+  const tips = RULES.filter(r =&gt; r.priority &gt;= 10);
+  return tips[Math.floor(Math.random() * tips.length)];
+}
+&nbsp;
+// AI Coach responses (rule-based, no API needed)
+const COACH_RESPONSES = {
+  greeting: [
+    "Hi there! 🌱 I'm your AI Sustainability Coach. I'm here to help you understand and reduce your carbon footprint. What would you like to know?",
+    "Welcome! 🌍 Let's make the planet greener together. Ask me anything about sustainability, or tell me about your daily habits and I'll suggest improvements!",
+  ],
+  carbon_explain: [
+    "**Carbon footprint** is the total amount of greenhouse gases (mainly CO₂) produced by your activities. 🏭\n\nIt's measured in **kg CO₂ equivalent (CO₂e)** and includes:\n- 🚗 How you travel\n- ⚡ Your electricity use\n- 🍽️ What you eat\n- 🛍️ What you buy\n- 🗑️ Your waste\n\nThe average person produces about **13.2 kg CO₂/day** globally. The goal is to get below **6 kg/day** by 2030!",
+  ],
+  reduce_tips: [
+    "Here are my **top 5 ways to reduce** your footprint today:\n\n1. 🚶 **Walk or bike** for short trips (saves 0.2 kg/km)\n2. 🥗 **Eat one plant-based meal** daily (saves 2-3 kg/day)\n3. 💡 **Turn off unused appliances** (saves 1-2 kg/day)\n4. ♻️ **Recycle and compost** (saves 0.5 kg/day)\n5. 🛍️ **Buy less, choose wisely** (saves 5-50 kg per item)\n\nStart with one change and build from there! 💪",
+  ],
+  transport: [
+    "**Transport** is often the biggest emission source! Here's a comparison:\n\n| Mode | CO₂/km |\n|------|--------|\n| ✈️ Domestic Flight | 0.255 kg |\n| 🚗 Petrol Car | 0.21 kg |\n| 🏍️ Motorcycle | 0.11 kg |\n| 🚌 Bus | 0.089 kg |\n| 🚆 Train | 0.041 kg |\n| 🚲 Bicycle | 0 kg |\n| 🚶 Walking | 0 kg |\n\n**Pro tip:** Carpooling cuts your per-person emissions by 50-75%!",
+  ],
+  food: [
+    "**Food choices** have a huge impact! 🍽️\n\n- 🥩 Beef produces **27 kg CO₂/kg** — that's massive!\n- 🍗 Chicken is much lower at **6.9 kg CO₂/kg**\n- 🥦 Vegetables are just **2 kg CO₂/kg**\n- 🌱 A vegan meal produces only **0.7 kg CO₂**\n\n**You don't have to go fully vegan!** Even replacing 2-3 meals a week with plant-based options makes a big difference. Try 'Meatless Mondays' to start!",
+  ],
+  electricity: [
+    "⚡ **Electricity tips** to lower your footprint:\n\n1. Switch to **LED bulbs** — use 75% less energy\n2. **Unplug chargers** when not in use — phantom power adds up\n3. Use **natural light** during daytime\n4. Set AC to **24-26°C** instead of lower\n5. Wash clothes in **cold water** — heating water uses lots of energy\n6. Consider **solar panels** if possible — reduces emissions by 90%\n\nSmall changes in habits can save 2-5 kg CO₂ every day!",
+  ],
+  motivation: [
+    "🌟 **You're making a difference!** Every small action counts:\n\n- If 1 million people skipped one car trip per week, we'd save **10,000 tons of CO₂** per year\n- Recycling one aluminum can saves enough energy to run a TV for 3 hours\n- Planting one tree absorbs about 22 kg of CO₂ per year\n\nYou're not alone in this journey. Keep going! 🌱💚",
+    "💪 **Remember:** Climate change isn't solved by one person being perfect — it's solved by millions of people being imperfectly consistent.\n\nEvery sustainable choice you make inspires others around you. You're building habits that will last a lifetime! 🌍✨",
+  ],
+  weekly_plan: [
+    "📋 **Your Weekly Eco Plan:**\n\n**Monday:** 🥗 Meatless Monday — try a fully plant-based day\n**Tuesday:** 🚶 Walk or bike for at least one trip\n**Wednesday:** ♻️ Sort your recyclables and start composting\n**Thursday:** 💡 Energy audit — unplug unused devices\n**Friday:** 🛍️ Zero shopping day — buy nothing new\n**Saturday:** 🌱 Plant something or visit a local market\n**Sunday:** 📊 Review your week and plan next week's goals\n\nTrack your progress in the dashboard! 🎯",
+  ],
+  waste: [
+    "🗑️ **Waste reduction** is easier than you think!\n\n**The 5 R's:**\n1. **Refuse** — Say no to things you don't need\n2. **Reduce** — Buy less, choose quality over quantity\n3. **Reuse** — Use reusable bags, bottles, containers\n4. **Recycle** — Sort waste properly\n5. **Rot** — Compost food scraps\n\n**Did you know?** Landfill waste produces 0.58 kg CO₂/kg, but recycling reduces that to just 0.02 kg CO₂/kg. That's a **96% reduction!**",
+  ],
+  default: [
+    "Great question! 🤔 Here are some things I can help with:\n\n- 📊 **Explain** your carbon footprint\n- 💡 **Tips** to reduce emissions\n- 🚗 **Transport** comparisons\n- 🍽️ **Food** impact analysis\n- ⚡ **Electricity** saving advice\n- 🗑️ **Waste** reduction strategies\n- 📋 **Weekly plan** for improvement\n- 💪 **Motivation** and encouragement\n\nJust type a topic or ask a question!",
+  ],
+};
+&nbsp;
+export function getCoachResponse(message) {
+  const lower = message.toLowerCase();
+&nbsp;
+  if (lower.includes('hello') || lower.includes('hi') || lower.includes('hey') || lower.includes('start')) {
+    return pickRandom(COACH_RESPONSES.greeting);
+  }
+  if (lower.includes('what is carbon') || lower.includes('explain') || lower.includes('carbon footprint') || lower.includes('what is co2')) {
+    return pickRandom(COACH_RESPONSES.carbon_explain);
+  }
+  if (lower.includes('reduce') || lower.includes('lower') || lower.includes('tips') || lower.includes('how to') || lower.includes('improve')) {
+    return pickRandom(COACH_RESPONSES.reduce_tips);
+  }
+  if (lower.includes('transport') || lower.includes('car') || lower.includes('drive') || lower.includes('travel') || lower.includes('flight') || lower.includes('bus') || lower.includes('train')) {
+    return pickRandom(COACH_RESPONSES.transport);
+  }
+  if (lower.includes('food') || lower.includes('eat') || lower.includes('diet') || lower.includes('meat') || lower.includes('vegan') || lower.includes('vegetarian')) {
+    return pickRandom(COACH_RESPONSES.food);
+  }
+  <span class="missing-if-branch" title="if path not taken" >I</span>if (lower.includes('electric') || lower.includes('energy') || lower.includes('power') || lower.includes('light') || lower.includes('solar')) {
+<span class="cstat-no" title="statement not covered" >    return pickRandom(COACH_RESPONSES.electricity);</span>
+  }
+  <span class="missing-if-branch" title="if path not taken" >I</span>if (lower.includes('waste') || lower.includes('recycle') || lower.includes('trash') || lower.includes('garbage') || lower.includes('compost')) {
+<span class="cstat-no" title="statement not covered" >    return pickRandom(COACH_RESPONSES.waste);</span>
+  }
+  <span class="missing-if-branch" title="if path not taken" >I</span>if (lower.includes('motivat') || lower.includes('encourage') || lower.includes('inspire') || lower.includes('why')) {
+<span class="cstat-no" title="statement not covered" >    return pickRandom(COACH_RESPONSES.motivation);</span>
+  }
+  <span class="missing-if-branch" title="if path not taken" >I</span>if (lower.includes('plan') || lower.includes('week') || lower.includes('schedule') || lower.includes('routine')) {
+<span class="cstat-no" title="statement not covered" >    return pickRandom(COACH_RESPONSES.weekly_plan);</span>
+  }
+&nbsp;
+  return pickRandom(COACH_RESPONSES.default);
+}
+&nbsp;
+function pickRandom(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+&nbsp;</pre></td></tr></table></pre>
+
+                <div class='push'></div><!-- for sticky footer -->
+            </div><!-- /wrapper -->
+            <div class='footer quiet pad2 space-top1 center small'>
+                Code coverage generated by
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at 2026-06-21T18:21:35.123Z
+            </div>
+        <script src="../prettify.js"></script>
+        <script>
+            window.onload = function () {
+                prettyPrint();
+            };
+        </script>
+        <script src="../sorter.js"></script>
+        <script src="../block-navigation.js"></script>
+    </body>
+</html>
+    

@@ -9,7 +9,7 @@ describe('Onboarding Component', () => {
     expect(screen.getByPlaceholderText('Enter your name')).toBeInTheDocument();
   });
 
-  it('progresses to step 2 when name is entered', () => {
+  it('progresses to step 2 when name is entered', async () => {
     render(<Onboarding updateProfile={vi.fn()} />);
     
     const input = screen.getByPlaceholderText('Enter your name');
@@ -24,11 +24,11 @@ describe('Onboarding Component', () => {
     fireEvent.click(button);
     
     // Now on step 2
-    expect(screen.getByText('Nice to meet you, TestUser!')).toBeInTheDocument();
-    expect(screen.getByText('Reduce my carbon footprint')).toBeInTheDocument();
+    expect(await screen.findByText('Nice to meet you, TestUser!')).toBeInTheDocument();
+    expect(await screen.findByText('Reduce my carbon footprint')).toBeInTheDocument();
   });
 
-  it('calls updateProfile when step 2 is completed', () => {
+  it('calls updateProfile when step 2 is completed', async () => {
     const mockUpdateProfile = vi.fn();
     render(<Onboarding updateProfile={mockUpdateProfile} />);
     
@@ -37,8 +37,8 @@ describe('Onboarding Component', () => {
     fireEvent.change(input, { target: { value: 'TestUser' } });
     fireEvent.click(screen.getByText('Continue'));
     
-    // Step 2
-    const goalButton = screen.getByText('Reduce my carbon footprint');
+    // Step 2 (need to wait for Framer Motion animation)
+    const goalButton = await screen.findByText('Reduce my carbon footprint');
     fireEvent.click(goalButton);
     
     const goButton = screen.getByText("Let's Go!");

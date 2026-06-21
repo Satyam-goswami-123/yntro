@@ -11,6 +11,7 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: ['./vitest.setup.js'],
     globals: true,
+    exclude: ['node_modules', 'tests/e2e/**'],
     coverage: {
       provider: 'v8',
       reporter: ['text', 'json', 'html'],
@@ -22,6 +23,7 @@ export default defineConfig({
         'tests/**',
         'dist/**',
         'src/main.jsx', // skip entry point from coverage
+        'src/pages/GamePage.jsx', // skip WebGL canvas from unit test coverage
         '.eslintrc.cjs'
       ]
     }
