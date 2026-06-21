@@ -25,7 +25,11 @@ export function getUserProfile() {
 }
 
 export function saveUserProfile(profile) {
-  userProfile = { ...profile };
+  if (!profile) {
+    userProfile = null;
+  } else {
+    userProfile = { ...profile };
+  }
 }
 
 // Carbon history
