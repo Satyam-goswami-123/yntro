@@ -35,9 +35,8 @@ export default function Layout({ profile }) {
     <div className="min-h-screen flex flex-col relative z-10">
       {/* Top Navbar */}
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled || !isHome ? 'glass shadow-lg py-3' : 'bg-transparent py-5'
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled || !isHome ? 'glass shadow-lg py-3' : 'bg-transparent py-5'
+          }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
           {/* Logo */}
@@ -63,10 +62,9 @@ export default function Layout({ profile }) {
                   key={item.path}
                   to={item.path}
                   className={({ isActive }) =>
-                    `flex items-center gap-2 px-5 py-2 rounded-full transition-all duration-300 font-medium text-sm ${
-                      isActive
-                        ? 'bg-gradient-to-r from-primary-500 to-accent-500 text-white shadow-md shadow-primary-500/20'
-                        : 'text-dark-300 hover:text-white hover:bg-dark-800/50'
+                    `flex items-center gap-2 px-5 py-2 rounded-full transition-all duration-300 font-medium text-sm ${isActive
+                      ? 'bg-gradient-to-r from-primary-500 to-accent-500 text-white shadow-md shadow-primary-500/20'
+                      : 'text-dark-300 hover:text-white hover:bg-dark-800/50'
                     }`
                   }
                 >
@@ -120,10 +118,9 @@ export default function Layout({ profile }) {
                     key={item.path}
                     to={item.path}
                     className={({ isActive }) =>
-                      `flex items-center gap-4 px-6 py-4 rounded-2xl transition-all duration-200 text-lg ${
-                        isActive
-                          ? 'bg-gradient-to-r from-primary-500/20 to-accent-500/20 text-primary-400 border border-primary-500/30'
-                          : 'text-dark-300 hover:bg-dark-800'
+                      `flex items-center gap-4 px-6 py-4 rounded-2xl transition-all duration-200 text-lg ${isActive
+                        ? 'bg-gradient-to-r from-primary-500/20 to-accent-500/20 text-primary-400 border border-primary-500/30'
+                        : 'text-dark-300 hover:bg-dark-800'
                       }`
                     }
                   >

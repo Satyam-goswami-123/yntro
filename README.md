@@ -103,4 +103,4 @@ src/
 
 ## 📄 License
 
-Built for Void Hacks 7.0 by Code Novices
+Built with ❤️ by Code Novices

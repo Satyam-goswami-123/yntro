@@ -1,19 +1,17 @@
-// LocalStorage-based persistence for all user data
+// In-memory storage for user data. Data is NOT stored persistently.
 
-const STORAGE_KEYS = {
-  USER_PROFILE: 'yntro_profile',
-  CARBON_HISTORY: 'yntro_carbon_history',
-  MISSIONS_COMPLETED: 'yntro_missions_completed',
-  GAME_STATS: 'yntro_game_stats',
-  CHAT_HISTORY: 'yntro_chat_history',
-};
+let userProfile = null;
+let carbonHistory = [];
+let missionsCompleted = [];
+let gameStats = { highScore: 0, gamesPlayed: 0, totalTokens: 0 };
+let chatHistory = [];
 
 // User profile
 export function getUserProfile() {
-  const data = localStorage.getItem(STORAGE_KEYS.USER_PROFILE);
-  if (data) return JSON.parse(data);
+  if (userProfile) return userProfile;
   return {
     name: 'Eco Explorer',
+    onboarded: false,
     totalPoints: 0,
     streak: 0,
     lastLogDate: null,
@@ -27,53 +25,45 @@ export function getUserProfile() {
 }
 
 export function saveUserProfile(profile) {
-  localStorage.setItem(STORAGE_KEYS.USER_PROFILE, JSON.stringify(profile));
+  userProfile = { ...profile };
 }
 
 // Carbon history
 export function getCarbonHistory() {
-  const data = localStorage.getItem(STORAGE_KEYS.CARBON_HISTORY);
-  return data ? JSON.parse(data) : [];
+  return [...carbonHistory];
 }
 
 export function saveCarbonEntry(entry) {
-  const history = getCarbonHistory();
-  history.push({ ...entry, id: Date.now(), date: new Date().toISOString() });
-  localStorage.setItem(STORAGE_KEYS.CARBON_HISTORY, JSON.stringify(history));
-  return history;
+  carbonHistory.push({ ...entry, id: Date.now(), date: new Date().toISOString() });
+  return [...carbonHistory];
 }
 
 // Completed missions
 export function getCompletedMissions() {
-  const data = localStorage.getItem(STORAGE_KEYS.MISSIONS_COMPLETED);
-  return data ? JSON.parse(data) : [];
+  return [...missionsCompleted];
 }
 
 export function saveMissionComplete(missionId, points) {
-  const completed = getCompletedMissions();
-  if (!completed.find(m => m.id === missionId)) {
-    completed.push({ id: missionId, date: new Date().toISOString(), points });
-    localStorage.setItem(STORAGE_KEYS.MISSIONS_COMPLETED, JSON.stringify(completed));
+  if (!missionsCompleted.find(m => m.id === missionId)) {
+    missionsCompleted.push({ id: missionId, date: new Date().toISOString(), points });
   }
-  return completed;
+  return [...missionsCompleted];
 }
 
 // Game stats
 export function getGameStats() {
-  const data = localStorage.getItem(STORAGE_KEYS.GAME_STATS);
-  return data ? JSON.parse(data) : { highScore: 0, gamesPlayed: 0, totalTokens: 0 };
+  return { ...gameStats };
 }
 
 export function saveGameStats(stats) {
-  localStorage.setItem(STORAGE_KEYS.GAME_STATS, JSON.stringify(stats));
+  gameStats = { ...stats };
 }
 
 // Chat history
 export function getChatHistory() {
-  const data = localStorage.getItem(STORAGE_KEYS.CHAT_HISTORY);
-  return data ? JSON.parse(data) : [];
+  return [...chatHistory];
 }
 
 export function saveChatHistory(messages) {
-  localStorage.setItem(STORAGE_KEYS.CHAT_HISTORY, JSON.stringify(messages));
+  chatHistory = [...messages];
 }

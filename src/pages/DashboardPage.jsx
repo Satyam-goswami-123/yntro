@@ -45,8 +45,8 @@ export default function DashboardPage({ profile, updateProfile }) {
 
   const pieData = latestBreakdown
     ? Object.entries(latestBreakdown)
-        .filter(([, v]) => v > 0)
-        .map(([key, value]) => ({ name: CATEGORY_LABELS[key], value, color: CATEGORY_COLORS[key] }))
+      .filter(([, v]) => v > 0)
+      .map(([key, value]) => ({ name: CATEGORY_LABELS[key], value, color: CATEGORY_COLORS[key] }))
     : [];
 
   const trendData = history.slice(-14).map((entry, i) => ({
@@ -255,9 +255,8 @@ export default function DashboardPage({ profile, updateProfile }) {
             return (
               <div
                 key={badge.id}
-                className={`glass rounded-2xl p-4 text-center transition-all duration-300 ${
-                  earned ? 'border-primary-500/30 glow-green' : 'opacity-40'
-                }`}
+                className={`glass rounded-2xl p-4 text-center transition-all duration-300 ${earned ? 'border-primary-500/30 glow-green' : 'opacity-40'
+                  }`}
               >
                 <span className="text-3xl">{badge.icon}</span>
                 <p className="text-xs font-semibold mt-2">{badge.title}</p>
